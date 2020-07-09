@@ -1,6 +1,28 @@
+%{
+Welcome to LilyPond
+===================
+
+Congratulations, LilyPond has been installed successfully.
+
+Now to take it for the first test run.
+
+  1. Save this file
+
+  2. Select
+
+       Compile > Typeset file
+
+  from the menu.
+
+  The file is processed, and
+
+  3.  The PDF viewer will pop up. Click one of the noteheads.
+
+
+That's it.  For more information, visit http://lilypond.org .
+
+%}
 \layout {
-%  #(set! paper-alist (cons '("mein Format" . (cons (* 28 cm) (* 20 cm))) paper-alist))
-%  #(set-default-paper-size "mein Format")
   indent = #0
   \context {
     \Score
@@ -11,56 +33,30 @@
  oddFooterMarkup = \markup{ \fill-line{ \line{" "} } }
 }
 \header{
-  title = "Frühlingserwachen"
-  subtitle = "für momo"
- 
-composer = "Text und Melodie: kachān" 
+  title = "Trollträume"
+  composer = "Text & Melodie: Isabel Eisenträger und kachān"
+  arranger = "2. Stimme: Momo"
+ %\markup \right-column { \line {Komponist 1} \line {Komponist 2 } \line { Komponist 3 } }
 }
-
-Akkorde = \chords { \time 6/8  \set chordNameLowercaseMinor = ##t  \germanChords
-       { 
-             \set noChordSymbol = ""
-             a2.:m c2. g2. a2.:m \once \set chordChanges = ##f  a2.:m d2.:m
-             c2. g2. e2. e1 a1:m c1
-             g1 a1:m \once \set chordChanges = ##f  a1:m d1:m c1 g1 a1:m e1
-           }
-}
-
-
 \score {
-\new ChoirStaff <<
-      \Akkorde
-\transpose f c'
-    \new Staff {
-      \new Voice = "melody" {
-\relative c {\key c\major  \time 3/4
-    \repeat volta 2 {a'2 b4 c2 c4 d4 c4 b4} \alternative{ { a2 e4 } {a4 r4 e'4}} f4 e4 d4
-    c4 c4 c4 b4 b4 b4 e2 r4\bar "||"  
- \time 2/2          \tempo \markup {
-    \concat { \smaller \general-align #Y #DOWN \note #"4" #1 " = " \smaller \general-align #Y #DOWN \note #"4" #1     }}
-e2 e2 \repeat volta 2 { a,4 a2 b4 c4 c2 c4
-                                      d4 c2 b4}
-    \alternative{ {a2. e4} { a4 r4 e'4 e4 } }
-    \repeat volta 2 {f4 e2 d4 c4 c2 c4 b4 b2 b4} \alternative{{ a2 r4 e'4} {e2 r2}}\bar"|."
+<<
+\chords { \time 4/4  \set chordNameLowercaseMinor = ##t  \germanChords
+         \partial4 s4   e4:m s2. g4 s2. d4 s2. e4:m s1   s2. g4 s2. d4 s2. e4:m s2. g4 s2. d4 s2. c2 d2 g1 e1:m g1 e2:m d2 e2.:m
+ \repeat volta 2 {s4 b1:m/e d1 }\alternative { { a1d1} { a2 b2:7 e1:m}}}
+ \relative c' {\key e \minor \time 4/4
+ \partial4  b4 e4. e8 e4. e8 b'4. b8 b4. b8 a4 a g fis e2. b4 e4. e8 e4. e8 <<b'4. g4.>> <<b8 g8>> b4 b4 <<d4 a4>> <<d a>> c <<b cis>> <<e,2. b'>> e,4 <<b'4. g>> <<b8 e,>> <<b'4.g>> <<b8 g>> <<d'4a>> <<d a>> <<d4. a>> <<d8 a>> <<e'4 c>> <<e c>> <<d a>> <<c a>> <<d d,>> << b'8 d,>> <<b'4. d,>> <<b'4 g>> e4. e8 e4. e8 <<b'4 d,>> <<b' d,>> <<b'4. d,>> <<b'8 d,>> a'4 a g fis e e2\break
+ \repeat volta 2 {e4 b'4. b8 b4 b a g fis4. fis8 }\alternative { { e4 fis  g e fis1} { e4 fis g d e1}}\bar "|."
 }
+ \addlyrics {Es war ein -- mal ein klei -- ner Troll, der hat -- te ganz viel Spaß er sang und sprang und hüpf -- te rum und wälz -- te sich im Gras. Er troll -- te auf der Wie -- se rum, in Pfü -- tzen macht er'n Pa -- pa nass spielt Strei -- che, ko -- kelt und macht Dreck und al -- le sa -- gen: Lass das!
+  %\repeat volta 2 {Doch klei -- ne Trol -- le tun nicht gern, was man zu ih -- nen sagt Sie sin -- gen, tan -- zen, spri -- ngen gern Und das den gan -- zen Tag.}
+             
+             <<
+	{Doch klei -- ne Trol -- le tun nicht gern, was man zu ih -- nen sagt das den gan -- zen Tag. }
+	\new Lyrics {
+	  \set associatedVoice = "melody"
+	 Sie sin -- gen, tan -- zen, spri -- ngen gern und 
+	}
+ >>}
+>>}
 
 
-      }
-    }
-      \addlyrics {
-    \set stanza = "1. " Wenn die er -- sten Blü -- ten sich öff -- nen "" 
-    die Schnee -- häub -- chen schmel -- zend die Zeit nicht mehr steht.
-    Dann er -- wacht uns' -- re Mo -- mo, die Welt färbt sich bunt, sie ""
-    Dann er -- wacht uns' -- re Mo -- mo, die Welt färbt sich bunt, sie
-  }
-  \addlyrics{
-    und der Wind __ "" lei -- "" -- se "" "" weht, "" "" "" ""
-    "" "" "" "" "" "" "" "" "" streckt ih -- re Glie -- der und
-    tanzt ei -- ne "" "" Rund' "" "" streckt ih -- re Glie -- der und tanzt ei -- ne "" "" Rund'.
-  }
-
-
-
-        
-  >>
-}
