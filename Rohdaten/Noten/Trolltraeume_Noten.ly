@@ -34,7 +34,7 @@ That's it.  For more information, visit http://lilypond.org .
 }
 \header{
   title = "Trollträume"
-  composer = "Text & Melodie: Isabel Eisenträger und kachān"
+  composer = "Text & Melodie: Isi und kachān"
   arranger = "2. Stimme: Momo"
  %\markup \right-column { \line {Komponist 1} \line {Komponist 2 } \line { Komponist 3 } }
 }
